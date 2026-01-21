@@ -1,0 +1,205 @@
+export interface VisualizerConfig {
+  overallScale: number;
+  particleSize: number;
+  trebleSensitivity: number;
+  explosionIntensity: number;
+  diffusionStrength: number;
+  collisionStrength: number;
+  randomScatter: number;
+  colorFactor: number;
+  rotationSpeed: number;
+  morphSpeed: number;
+  activeShape: string;
+  autoRotate: boolean;
+  gestureEnabled: boolean;
+}
+
+export enum ShapeType {
+  // Original
+  GALAXY = 'GALAXY',
+  MUSIC_FLOW = 'MUSIC_FLOW',
+  SCALE_JUMP = 'SCALE_JUMP',
+  SPHERE = 'SPHERE',
+  CUBE = 'CUBE',
+  BUTTERFLY = 'BUTTERFLY',
+  JELLYFISH = 'JELLYFISH',
+  WHALE = 'WHALE',
+  LION = 'LION',
+  BIRD = 'BIRD',
+  CAT = 'CAT',
+  FISH = 'FISH',
+  SPIDER = 'SPIDER',
+  DRAGON = 'DRAGON',
+  PHOENIX = 'PHOENIX',
+  TREE_SPIRAL = 'TREE_SPIRAL',
+  CACTUS = 'CACTUS',
+  MUSHROOM = 'MUSHROOM',
+  SUNFLOWER = 'SUNFLOWER',
+  ROSE_3D = 'ROSE_3D',
+  LOTUS_FLOW = 'LOTUS_FLOW',
+  BAMBOO = 'BAMBOO',
+  LEAF = 'LEAF',
+  CORAL = 'CORAL',
+  GRASS = 'GRASS',
+  CUSTOM_IMAGE = 'CUSTOM_IMAGE',
+  AI_PROMPT = 'AI_PROMPT',
+
+  // Space & Cosmic
+  SATURN = 'SATURN',
+  BLACK_HOLE = 'BLACK_HOLE',
+  SUPERNOVA = 'SUPERNOVA',
+  PULSAR = 'PULSAR',
+  NEBULA_CLOUD = 'NEBULA_CLOUD',
+  CRESCENT = 'CRESCENT',
+  STAR_CLUSTER = 'STAR_CLUSTER',
+  METEOR_SHOWER = 'METEOR_SHOWER',
+  SOLAR_FLARE = 'SOLAR_FLARE',
+  ORBITAL_RINGS = 'ORBITAL_RINGS',
+
+  // Animals & Mythology
+  PEGASUS = 'PEGASUS',
+  HYDRA = 'HYDRA',
+  KRAKEN = 'KRAKEN',
+  GRIFFIN = 'GRIFFIN',
+  UNICORN = 'UNICORN',
+  MEDUSA = 'MEDUSA',
+  ELEPHANT = 'ELEPHANT',
+  GIRAFFE = 'GIRAFFE',
+  PENGUIN = 'PENGUIN',
+  OWL = 'OWL',
+  WOLF = 'WOLF',
+  FOX = 'FOX',
+  TIGER = 'TIGER',
+  BEAR = 'BEAR',
+  EAGLE_SOAR = 'EAGLE_SOAR',
+  SHARK_FIN = 'SHARK_FIN',
+  DOLPHIN_JUMP = 'DOLPHIN_JUMP',
+  OCTOPUS = 'OCTOPUS',
+  CRAB_CLAW = 'CRAB_CLAW',
+  SCORPION_STING = 'SCORPION_STING',
+
+  // Nature & Weather
+  SNOWFLAKE_GEO = 'SNOWFLAKE_GEO',
+  RAINDROP_SPLASH = 'RAINDROP_SPLASH',
+  TORNADO_TWIST = 'TORNADO_TWIST',
+  LIGHTNING_BOLT = 'LIGHTNING_BOLT',
+  CLOUD_PUFF = 'CLOUD_PUFF',
+  AURORA_WAVE = 'AURORA_WAVE',
+  VOLCANO_ERUPT = 'VOLCANO_ERUPT',
+  OCEAN_WAVE = 'OCEAN_WAVE',
+  CRYSTAL_CAVE = 'CRYSTAL_CAVE',
+  FIRE_FLAME = 'FIRE_FLAME',
+
+  // Zodiac
+  ARIES = 'ARIES',
+  TAURUS = 'TAURUS',
+  GEMINI = 'GEMINI',
+  CANCER = 'CANCER',
+  LEO_ZODIAC = 'LEO_ZODIAC',
+  VIRGO = 'VIRGO',
+  LIBRA = 'LIBRA',
+  SCORPIO = 'SCORPIO',
+  SAGITTARIUS = 'SAGITTARIUS',
+  CAPRICORN = 'CAPRICORN',
+  AQUARIUS = 'AQUARIUS',
+  PISCES = 'PISCES',
+
+  // Math & Abstract
+  MOBIUS_STRIP = 'MOBIUS_STRIP',
+  KLEIN_BOTTLE = 'KLEIN_BOTTLE',
+  HYPERCUBE_4D = 'HYPERCUBE_4D',
+  KOCH_SNOWFLAKE = 'KOCH_SNOWFLAKE',
+  LORENZ_ATTRACTOR = 'LORENZ_ATTRACTOR',
+  ROSSLER_ATTRACTOR = 'ROSSLER_ATTRACTOR',
+  CLIFFORD_ATTRACTOR = 'CLIFFORD_ATTRACTOR',
+  DE_JONG_ATTRACTOR = 'DE_JONG_ATTRACTOR',
+  MANDELBROT_3D = 'MANDELBROT_3D',
+  JULIA_3D = 'JULIA_3D',
+  SIERPINSKI_GASKET = 'SIERPINSKI_GASKET',
+  TORUS_KNOT_A = 'TORUS_KNOT_A',
+  TORUS_KNOT_B = 'TORUS_KNOT_B',
+  SUPERFORMULA_A = 'SUPERFORMULA_A',
+  SUPERFORMULA_B = 'SUPERFORMULA_B',
+
+  // Objects & Symbols
+  DNA_HELIX = 'DNA_HELIX',
+  ATOM_STRUCTURE = 'ATOM_STRUCTURE',
+  DIAMOND_CUT = 'DIAMOND_CUT',
+  CROWN_KING = 'CROWN_KING',
+  HEART_3D = 'HEART_3D',
+  INFINITY_SYM = 'INFINITY_SYM',
+  MUSICAL_NOTE = 'MUSICAL_NOTE',
+  PIANO_KEYS = 'PIANO_KEYS',
+  HOURGLASS_TIME = 'HOURGLASS_TIME',
+  COMPASS_ROSE = 'COMPASS_ROSE',
+  EYE_OF_RA = 'EYE_OF_RA',
+  ANKH_SYMBOL = 'ANKH_SYMBOL',
+  YIN_YANG = 'YIN_YANG',
+  CHESS_KNIGHT = 'CHESS_KNIGHT',
+
+  // Flora
+  TULIP_FLOWER = 'TULIP_FLOWER',
+  LILY_PAD = 'LILY_PAD',
+  SAKURA_BLOOM = 'SAKURA_BLOOM',
+  ORCHID_VINE = 'ORCHID_VINE',
+  DAISY_FIELD = 'DAISY_FIELD',
+  PINE_CONE = 'PINE_CONE',
+  MAPLE_LEAF = 'MAPLE_LEAF',
+  FERN_FROND = 'FERN_FROND',
+
+  // More Creatures
+  CHAMELEON = 'CHAMELEON',
+  HUMMINGBIRD = 'HUMMINGBIRD',
+  DRAGONFLY_WING = 'DRAGONFLY_WING',
+  STINGRAY = 'STINGRAY',
+  SWAN_GLIDE = 'SWAN_GLIDE',
+  PEACOCK_FAN = 'PEACOCK_FAN',
+  MANTIS_PRAY = 'MANTIS_PRAY',
+  SEAHORSE = 'SEAHORSE',
+  PLATYPUS = 'PLATYPUS',
+  FIREFLY_SWARM = 'FIREFLY_SWARM',
+  
+  // Geometric & Architecture
+  PYRAMID_GIZA = 'PYRAMID_GIZA',
+  PANTHEON_DOME = 'PANTHEON_DOME',
+  EIFFEL_TOWER = 'EIFFEL_TOWER',
+  HELIX_STAIRS = 'HELIX_STAIRS',
+  GEODESIC_DOME = 'GEODESIC_DOME',
+  PLATONIC_DODECA = 'PLATONIC_DODECA',
+  PLATONIC_ICOSA = 'PLATONIC_ICOSA',
+  FRACTAL_SPONGE = 'FRACTAL_SPONGE',
+  VORONOI_CELLS = 'VORONOI_CELLS',
+  TESSELLATION = 'TESSELLATION'
+}
+
+export enum PlayMode {
+  LIST = 'LIST',
+  LOOP = 'LOOP',
+  RANDOM = 'RANDOM'
+}
+
+export interface Song {
+  id: string;
+  name: string;
+  data: Blob;
+  isPreset: boolean;
+}
+
+export interface AudioStats {
+  bass: number;
+  mid: number;
+  treble: number;
+  isTransient: boolean;
+}
+
+export type GestureType = 'NONE' | 'FIST' | 'PALM' | 'INDEX' | 'SWIPE';
+
+export type ConnectionStatus = 'DISCONNECTED' | 'CONNECTING' | 'CONNECTED';
+export type ConnectionType = 'WIFI_P2P' | 'BLUETOOTH';
+
+export interface PeerMessage {
+  type: 'FILE_TRANSFER';
+  fileType: 'AUDIO' | 'IMAGE';
+  fileName: string;
+  payload: ArrayBuffer;
+}
