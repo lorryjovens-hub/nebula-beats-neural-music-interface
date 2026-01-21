@@ -1,0 +1,8 @@
+{
+  "name": "Nebula Beats - Neural Music Interface",
+  "description": "A high-performance 3D music visualizer using Three.js with 100,000 particles, Gemini AI sculpting, and live voice conversation.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}
